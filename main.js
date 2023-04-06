@@ -10,15 +10,31 @@ targetButton.addEventListener('click', () => {
 })
 
 const selectedForm = document.querySelector('form');
-selectedForm.addEventListener('click', (evt) => {
+selectedForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
 
-    const userNumInput = document.querySelector('#number-input')
+    const userNumInput = document.querySelector('#number-input').value
+    const userNum = Number(userNumInput)
 
-    if (userNumInput >= 10 || typeof(userNumInput) != Number) {
-        document.querySelector('#formFeedback').innerText = "Please enter a smaller number."
+    if (isNaN(userNum) || userNum >= 10) {
+        document.querySelector('#formFeedback').innerText = "Please enter a smaller number.";
     }
     else {
-        document.querySelector("#formFeedback").innerText = "You are good to go!"
+        document.querySelector("#formFeedback").innerText = "You are good to go!";
     }
 })
+  
+  // function validateNumber(evt) {
+  //   evt.preventDefault();
+  
+  //   const numberInput = document.querySelector('#number-input');
+  //   const userNum = Number(numberInput.value); // typecast to num
+  
+  //   const formFeedback = document.querySelector('#formFeedback');
+  //   if (isNaN(userNum) || userNum >= 10) {
+  //     formFeedback.innerText = 'Please enter a smaller number';
+  //   } else {
+  //     formFeedback.innerText = 'You are good to go!';
+  //   }
+  // }
+  // document.querySelector('.number-form').addEventListener('submit', validateNumber);
